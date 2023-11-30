@@ -50,6 +50,27 @@ namespace Umbraco.Cms.Web.Common.PublishedModels
 		// properties
 
 		///<summary>
+		/// Show Dark Mode: Set this to true if you want the carousel to be in dark mode
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.3+d2ff2ea")]
+		[ImplementPropertyType("showDarkMode")]
+		public virtual bool ShowDarkMode => this.Value<bool>(_publishedValueFallback, "showDarkMode");
+
+		///<summary>
+		/// Show Indicators: Set this to true if you would like to show the indicators on this carousel
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.3+d2ff2ea")]
+		[ImplementPropertyType("showIndicators")]
+		public virtual bool ShowIndicators => this.Value<bool>(_publishedValueFallback, "showIndicators");
+
+		///<summary>
+		/// Show Navigation Arrows: Set this to true if you would like to show the navigation arrows
+		///</summary>
+		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.3+d2ff2ea")]
+		[ImplementPropertyType("showNavigationArrows")]
+		public virtual bool ShowNavigationArrows => this.Value<bool>(_publishedValueFallback, "showNavigationArrows");
+
+		///<summary>
 		/// Hide: Set this to true if you want to hide this item
 		///</summary>
 		[global::System.CodeDom.Compiler.GeneratedCodeAttribute("Umbraco.ModelsBuilder.Embedded", "12.3.3+d2ff2ea")]
