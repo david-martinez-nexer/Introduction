@@ -1,0 +1,62 @@
+@inherits UmbracoViewPage<BlockListItem>
+
+@{
+    var row = (CarouselRow)Model.Content;
+    var settings = (CarouselRowSettings)Model.Settings;
+    if (settings?.Hide ?? false)
+    {
+        return;
+    }
+    if (row.CarouselItems == null || !row.CarouselItems.Any()) return;
+    var carouselId = "carousel-" + row.Key;
+    //var headingId = accordionId + "-heading-" + index;
+}
+<div id="@carouselId" class="carousel slide">
+  @{
+    var itemCount = row.CarouselItems.Count;
+    <div class="carousel-indicators">
+      @for (var slideIdex = 0; slideIdex < itemCount; slideIdex++)
+      {
+        var isFirst = slideIdex == 0;
+            <button type="button" data-bs-target="#@carouselId" data-bs-slide-to="@slideIdex" class="@(isFirst ? "active":null)" aria-current="@isFirst" aria-label="Slide @(slideIdex + 1)"></button>
+          }
+    </div>
+  }
+  
+  <div class="carousel-inner">
+    @{
+      var itemIndex = 0;
+      foreach (var item in row.CarouselItems)
+      {
+        var rowItem = (CarouselItem)item.Content;
+        var rowSettings = (CarouselItemSettings)item.Settings;
+        if (rowSettings.Hide) continue;
+
+        var isFirstSlide = itemIndex == 0;
+        
+        <div class="carousel-item @(isFirstSlide ? "active" : null)">
+          @if (rowItem.Image != null)
+          {
+            <img src="@rowItem.Image.Url()" class="d-block w-100" alt="@rowItem.Image.Name">
+          }
+        </div>
+      }
+      itemIndex++;
+    }
+   
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="..." class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
